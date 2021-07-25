@@ -29,9 +29,9 @@ module.exports = {
       provider: () => {
         return new HDWalletProvider({
           mnemonic: {
-            phrase: process.env.MAIN_MNEMONIC,
+            phrase: process.env.MNEMONIC,
           },
-          providerOrUrl: process.env.MAIN_NODE,
+          providerOrUrl: process.env.NODE,
         });
       },
       network_id: 1,
@@ -55,7 +55,7 @@ module.exports = {
       version: "0.8.6", // Fetch exact version from solc-bin (default: truffle's version)
     },
   },
-  plugins: ["truffle-plugin-verify", "solidity-coverage"],
+  plugins: ["truffle-plugin-verify"],
   api_keys: {
     etherscan: process.env.ETHERSCAN_API_KEY,
   },
