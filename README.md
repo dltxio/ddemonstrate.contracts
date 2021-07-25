@@ -1,2 +1,2 @@
 # ddemonstrate.contracts
-Smart contracts for ddemonstrate
+Smart contracts for ddemonstrate.org

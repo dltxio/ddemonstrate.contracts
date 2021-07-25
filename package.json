@@ -11,12 +11,13 @@
     "url": "git+https://github.com/dltxio/ddemonstrate.contracts.git"
   },
   "author": "",
-  "license": "MIT",
+  "license": "CC-BY-1.0",
   "bugs": {
     "url": "https://github.com/dltxio/ddemonstrate.contracts/issues"
   },
   "homepage": "https://github.com/dltxio/ddemonstrate.contracts#readme",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.2.0",
     "@truffle/hdwallet-provider": "^1.4.2",
     "dotenv": "^10.0.0"
   }

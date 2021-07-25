@@ -1,10 +1,11 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.6;
+// SPDX-License-Identifier: CC-BY-1.0
+pragma solidity =0.8.6;
+
+import "./IMintable.sol";
 
 struct Demonstration {
     uint256 startTime;
-    int256 lat;
-    int256 long;
+    bytes32[] whatThreeWords;
     uint256 funds;
     address owner;
 }
@@ -12,33 +13,43 @@ struct Demonstration {
 contract Demonstrate {
 
     address public immutable owner;
-    uint256 public immutable fee;
+    address public token;
+    uint256 private _funds;
 
     Demonstration[] public demonstrations;
 
-    constructor() {
-        owner = msg.sender;
-        fee = 0;
+    function count() public view returns (uint256) {
+        return demonstrations.length;
     }
 
-    function add(uint256 _startTime, int256 _lat, int256 _long) public payable {
-        require(msg.value >= fee, "Fee too low");
+    function totalFunds() public view returns (uint256) {
+        return _funds;
+    }
 
-        demonstrations.push(Demonstration(_startTime, _lat, _long, 0, msg.sender));
-        emit NewDemonstration(demonstrations.length - 1);
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function setToken(address _token) public onlyOwner {
+        token = _token;
+    }
+
+    function add(uint256 _startTime, bytes32[] memory _whatThreeWords) public {
+        require(_whatThreeWords.length == 2, "Not enough words");
+
+        demonstrations.push(Demonstration(_startTime, _whatThreeWords, 0, msg.sender));
+        emit NewDemonstration(demonstrations.length - 1, msg.sender);
     }
 
     function fund(uint256 _index) public payable {
         require(demonstrations[_index].owner != address(0), "Invalid demonstration");
         demonstrations[_index].funds += msg.value;
+        _funds += msg.value;
     }
 
-    function checkIn(uint256 _index) public onlyCampaignOwner() {
-
-    }
-
-    function payout() public {
-
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can execute this");
+        _;
     }
 
     modifier onlyCampaignOwner(uint256 _index) {
@@ -46,5 +57,5 @@ contract Demonstrate {
         _;
     }
 
-    event NewDemonstration(uint256 index);
+    event NewDemonstration(uint256 index, address indexed who);
 }
