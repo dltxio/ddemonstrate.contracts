@@ -38,6 +38,7 @@ contract Demonstrate {
         require(_whatThreeWords.length == 2, "Not enough words");
 
         demonstrations.push(Demonstration(_startTime, _whatThreeWords, 0, msg.sender));
+        IMintable(token).mint(msg.sender);
         emit NewDemonstration(demonstrations.length - 1, msg.sender);
     }
 
