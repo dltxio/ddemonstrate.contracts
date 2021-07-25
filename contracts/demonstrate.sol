@@ -1,21 +1,22 @@
-pragma solidity ^0.5.10;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.6;
+
+struct Demonstration {
+    uint256 startTime;
+    int256 lat;
+    int256 long;
+    uint256 funds;
+    address owner;
+}
 
 contract Demonstrate {
 
-    address public owner;
-    uint256 public fee;
-
-    struct Demonstration {
-        uint256 startTime;
-        int256 lat;
-        int256 long;
-        uint256 funds;
-        address owner;
-    }
+    address public immutable owner;
+    uint256 public immutable fee;
 
     Demonstration[] public demonstrations;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
         fee = 0;
     }

@@ -1,0 +1,23 @@
+{
+  "name": "ddemonstrate.contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for ddemonstrate",
+  "main": "truffle-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dltxio/ddemonstrate.contracts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dltxio/ddemonstrate.contracts/issues"
+  },
+  "homepage": "https://github.com/dltxio/ddemonstrate.contracts#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.4.2",
+    "dotenv": "^10.0.0"
+  }
+}
