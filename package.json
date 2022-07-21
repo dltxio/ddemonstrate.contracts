@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dltxio/ddemonstrate.contracts#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.2.0",
+    "@openzeppelin/contracts": "^4.7.1",
     "@truffle/hdwallet-provider": "^1.4.2",
     "dotenv": "^10.0.0",
     "truffle-plugin-verify": "^0.5.11"
